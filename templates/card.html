@@ -5,6 +5,7 @@
     </div>
     <div class="card__container">
         <div class="card__container_title">{{ var.component_name }}</div>
+        <!--
         <div class="card__container_status">
             {% if var.status == 1 %}
                 <p style="color:red">Удален</p>
@@ -12,7 +13,9 @@
                 <p style="color: white"><u>Действует</u></p>
             {% endif %}
         </div>
+        -->
         <div class="card__container_price">Цена - {{ var.price }} ₽</div>
         <div class="card__container_category">{{ var.category }}</div>
+        <a href="{% url 'delete_record' var.id %}" class="delete_btn">Удалить опцию</a>
     </div>
 </div>

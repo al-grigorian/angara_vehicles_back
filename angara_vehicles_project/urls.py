@@ -15,11 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from rest_framework import routers
 from angara_vehicles_app import views
+from rest_framework import permissions
+
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.GetOptions, name='options_url'),
     path('option/<int:id>/', views.GetOption, name='option_url'),
+    path('delete/<int:record_id>/', views.DeleteRecord, name='delete_record')
 ]

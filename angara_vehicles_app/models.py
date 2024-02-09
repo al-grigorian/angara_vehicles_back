@@ -14,7 +14,6 @@ class Applications(models.Model):
         (5, 'Отклонен'), 
     )
 
-    id = models.BigIntegerField(primary_key=True)
     id_creator = models.ForeignKey('Users', on_delete=models.CASCADE, blank=True, null=False)
     id_moderator = models.ForeignKey('Users', on_delete=models.CASCADE, related_name='applications_customer_set', blank=True, null=True)
     status = models.IntegerField(choices=STATUS_CHOICES, null=False)
@@ -25,8 +24,6 @@ class Applications(models.Model):
     class Meta: 
         verbose_name_plural = "Applications" 
         managed = True 
-    def __str__(self): 
-        return self.title 
 
 class ApplicationsComponents(models.Model):
     id_component = models.ForeignKey('Components', on_delete=models.CASCADE, blank=True, null=False)
@@ -47,8 +44,6 @@ class Users(models.Model):
     class Meta: 
         verbose_name_plural = "Users" 
         managed = True
-    def __str__(self): 
-        return self.title
 
 class Components(models.Model):
     STATUS_CHOICES = ( 
@@ -72,6 +67,4 @@ class Components(models.Model):
 
     class Meta:
         verbose_name_plural = "Components" 
-        managed = True 
-    def __str__(self): 
-        return self.title
+        managed = True
